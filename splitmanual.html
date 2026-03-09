@@ -2092,11 +2092,12 @@
         }
         function G1() { const usage = Ik(); const userlimit = Gw(); if (userlimit === 1000000) return !1; if (usage.week >= userlimit) return !0; return !1 }
         function G2() {
-            if (!G1()) return !1; In('You have surpassed the usage limit for this feature.'
-                , 'Usage Limit Exceeded'
-                , 'Update Subscription'
-                , 'Cancel'
-                , function () { AF('settings?subscription') }); return !0
+            // if (!G1()) return !1; In('You have surpassed the usage limit for this feature.'
+            //     , 'Usage Limit Exceeded'
+            //     , 'Update Subscription'
+            //     , 'Cancel'
+            //     , function () { AF('settings?subscription') }); return !0
+            return !1;
         }
         function Hm(event) { const events = JSON.parse(localStorage.getItem('EVENT_HISTORY')) || []; const eventset = new Set(events); eventset.add(event); localStorage.setItem('EVENT_HISTORY', JSON.stringify([...eventset])) }
         function I5(e, defaultvalue) { return Dx(e, defaultvalue) }
@@ -3237,7 +3238,7 @@
                     })
                 }
             }
-            oauth() { const redirect_uri = 'https://briskaudio.com/oauth_google'; const endpoint_success_url = 'https://briskaudio.com/settings.html?cloudsync&status=success'; const endpoint_failure_url = 'https://briskaudio.com/settings.html?cloudsync&status=error'; const auth_scope = 'https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile'; const state_data = { service: 'googledrive', endpoint: endpoint_success_url, endpointfail: endpoint_failure_url, redirect_uri: redirect_uri, scopes: auth_scope }; const auth_url = 'https://accounts.google.com/o/oauth2/v2/auth?client_id=982339679715-hk8m3oe7modqp7tungffbad2fgs7htkt&redirect_uri=' + encodeURIComponent(redirect_uri) + '&response_type=code&access_type=offline&prompt=consent&scope=' + encodeURIComponent(auth_scope) + '&state=' + window.btoa(EY(state_data)); window.location.href = auth_url }
+            // oauth() { const redirect_uri = 'https://briskaudio.com/oauth_google'; const endpoint_success_url = 'https://briskaudio.com/settings.html?cloudsync&status=success'; const endpoint_failure_url = 'https://briskaudio.com/settings.html?cloudsync&status=error'; const auth_scope = 'https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile'; const state_data = { service: 'googledrive', endpoint: endpoint_success_url, endpointfail: endpoint_failure_url, redirect_uri: redirect_uri, scopes: auth_scope }; const auth_url = 'https://accounts.google.com/o/oauth2/v2/auth?client_id=982339679715-hk8m3oe7modqp7tungffbad2fgs7htkt&redirect_uri=' + encodeURIComponent(redirect_uri) + '&response_type=code&access_type=offline&prompt=consent&scope=' + encodeURIComponent(auth_scope) + '&state=' + window.btoa(EY(state_data)); window.location.href = auth_url }
             uploadFile(folder, filename, blob, cb) {
                 const auth_token = this._getAuthToken(); if (!auth_token) { if (cb) cb(EO('Not authenticated - call authorize() first', 401)); return }
                 this._getOrCreateFolder(auth_token, folder, (err, folder_id) => {
@@ -3372,7 +3373,7 @@
                     })
                 }
             }
-            oauth() { const redirect_uri = 'https://briskaudio.com/oauth_onedrive'; const endpoint_success_url = 'https://briskaudio.com/settings.html?cloudsync&status=success'; const endpoint_failure_url = 'https://briskaudio.com/settings.html?cloudsync&status=error'; const auth_scope = 'https://graph.microsoft.com/Files.ReadWrite https://graph.microsoft.com/User.Read offline_access'; const state_data = { service: 'onedrive', endpoint: endpoint_success_url, endpointfail: endpoint_failure_url, redirect_uri: redirect_uri, scopes: auth_scope }; const auth_url = 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=3450845c-3671-4f54-ba0f-da81a5262116&redirect_uri=' + encodeURIComponent(redirect_uri) + '&response_type=code&scope=' + encodeURIComponent(auth_scope) + '&state=' + window.btoa(EY(state_data)); window.location.href = auth_url }
+            // oauth() { const redirect_uri = 'https://briskaudio.com/oauth_onedrive'; const endpoint_success_url = 'https://briskaudio.com/settings.html?cloudsync&status=success'; const endpoint_failure_url = 'https://briskaudio.com/settings.html?cloudsync&status=error'; const auth_scope = 'https://graph.microsoft.com/Files.ReadWrite https://graph.microsoft.com/User.Read offline_access'; const state_data = { service: 'onedrive', endpoint: endpoint_success_url, endpointfail: endpoint_failure_url, redirect_uri: redirect_uri, scopes: auth_scope }; const auth_url = 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=3450845c-3671-4f54-ba0f-da81a5262116&redirect_uri=' + encodeURIComponent(redirect_uri) + '&response_type=code&scope=' + encodeURIComponent(auth_scope) + '&state=' + window.btoa(EY(state_data)); window.location.href = auth_url }
             uploadFile(folder, filename, blob, cb) {
                 const auth_token = this._getAuthToken(); if (!auth_token) { if (typeof cb === 'function') cb(EO('Not authenticated - call authorize() first', 401)); return }
                 this._ensureFolder(auth_token, folder, (err) => {
@@ -3525,7 +3526,7 @@
                     })
                 }
             }
-            oauth() { const redirect_uri = 'https://briskaudio.com/oauth_dropbox'; const endpoint_success_url = 'https://briskaudio.com/settings.html?cloudsync&status=success'; const endpoint_failure_url = 'https://briskaudio.com/settings.html?cloudsync&status=error'; const auth_scope = 'files.metadata.read files.content.write files.content.read sharing.write sharing.read account_info.read'; const state_data = { service: 'dropbox', endpoint: endpoint_success_url, endpointfail: endpoint_failure_url, redirect_uri: redirect_uri, scopes: auth_scope }; const auth_url = 'https://www.dropbox.com/oauth2/authorize?client_id=m9bkwqncc4bsfnz&redirect_uri=' + encodeURIComponent(redirect_uri) + '&response_type=code&token_access_type=offline&scope=' + encodeURIComponent(auth_scope) + '&state=' + window.btoa(EY(state_data)); window.location.href = auth_url }
+            // oauth() { const redirect_uri = 'https://briskaudio.com/oauth_dropbox'; const endpoint_success_url = 'https://briskaudio.com/settings.html?cloudsync&status=success'; const endpoint_failure_url = 'https://briskaudio.com/settings.html?cloudsync&status=error'; const auth_scope = 'files.metadata.read files.content.write files.content.read sharing.write sharing.read account_info.read'; const state_data = { service: 'dropbox', endpoint: endpoint_success_url, endpointfail: endpoint_failure_url, redirect_uri: redirect_uri, scopes: auth_scope }; const auth_url = 'https://www.dropbox.com/oauth2/authorize?client_id=m9bkwqncc4bsfnz&redirect_uri=' + encodeURIComponent(redirect_uri) + '&response_type=code&token_access_type=offline&scope=' + encodeURIComponent(auth_scope) + '&state=' + window.btoa(EY(state_data)); window.location.href = auth_url }
             uploadFile(folder, filename, blob, cb) {
                 const auth_token = this._getAuthToken(); if (!auth_token) { if (typeof cb === 'function') cb(EO('Not authenticated - call authorize() first', 401)); return }
                 this._ensureFolder(auth_token, folder, (err) => {
@@ -5263,7 +5264,8 @@
             return currentSample
         }
         function RS() {
-            if (G2()) return; const id = localStorage.currentfile; if ((id === null) || (id === undefined)) { D4('No audio file selected. Please choose a file to split.'); return }
+            // if (G2()) return; 
+            const id = localStorage.currentfile; if ((id === null) || (id === undefined)) { D4('No audio file selected. Please choose a file to split.'); return }
             let start, end; const waveform_selection = Ji(); if (waveform_selection && (waveform_selection.length === 2)) { const totalseconds = Number(CK('player_timeline', 'max')); start = (waveform_selection[0] / 100) * totalseconds; end = (waveform_selection[1] / 100) * totalseconds } else { start = Number(Dy('split_time')); end = Number(Dy('split_time_end')) }
             if (!M0('split-manual-control', start, end)) return; Gg('AUDIO_STORE_CLIP', id, (err, file) => {
                 if (err) { return }
